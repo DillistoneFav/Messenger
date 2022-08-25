@@ -1,0 +1,26 @@
+.chat-item {
+  height: 55px;
+  color: #E9E9E9;
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  &:hover{
+    background: #2B2B2B;
+  }
+  .user-caption {
+    width: 100%;
+    padding: 0 1rem;
+    flex: 1 1 auto;
+    .dialog-title{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      height: 27px;
+      .name{
+        font-weight: 500;
+        width: 90%;
+      }
+    }
+  }
+}
