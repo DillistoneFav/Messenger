@@ -3,13 +3,13 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
+import './SearchInput.scss'
 
 
 const SearchInput: FC = () => {
     return (
         <Paper
             component="form"
-            className={"search-input"}
             sx={{
                 borderRadius: '22px',
                 marginBottom: '8px',

@@ -1,6 +1,12 @@
 .chats-folder{
   padding: 16px 8px;
   width: 420px;
+  min-width: 420px;
   background: #212121;
-  height: 100vh;
+  border-right: 1px solid #323232;
+}
+
+.chats-list{
+  border-top: 1px solid #494949;
+  padding-top: 5px;
 }

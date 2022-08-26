@@ -33,6 +33,7 @@ export default function ModalComp() {
                 BackdropProps={{
                     timeout: 500,
                 }}
+                disableAutoFocus={true}
             >
                 <Fade in={open}>
                     <div className={"modal-style"}>

@@ -9,7 +9,7 @@ const ChatsFolder: FC = () => {
         <div className={"chats-folder"}>
             <UserProfile/>
             <SearchInput/>
-            <div>
+            <div className={"chats-list"}>
                 <ChatItem/>
                 <ChatItem/>
                 <ChatItem/>

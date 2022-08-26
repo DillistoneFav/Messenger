@@ -1,0 +1,55 @@
+
+.prof-sect{
+  background: #212121;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #323232;
+  .left-sect{
+    display: flex;
+    .user-profile-caption{
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+      h3{
+        margin: 0;
+        color: #FFFFFF;
+      }
+      .last-seen{
+        color: #8a8a8a;
+        font-size: 14px;
+      }
+    }
+  }
+  .right-sect{
+    .functional-button{
+      background: none;
+      outline: none;
+      border: none;
+      border-radius: 20px;
+      transition: 0.3s;
+      &:hover{
+        background: #2B2B2B;
+      }
+    }
+  }
+}
+
+.popover-content{
+  padding: 1rem;
+  width: 150px;
+  background: #212121;
+  font-size: 1.25rem;
+  color: #E9E9E9;
+  .popover-action{
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 10px;
+    text-align: center;
+    &:hover{
+      background: #121212;
+    }
+  }
+}
