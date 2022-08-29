@@ -1,11 +1,20 @@
 .chat-message{
   display: flex;
+  margin-bottom: 10px;
   .message-exactly{
     background: #212121;
-    padding: 0.5rem 0.5rem;
+    padding: 0.3rem 1rem 1.3rem 0.5rem;
     display: inline-flex;
     border-radius: 10px;
     position: relative;
+    max-width: 40%;
+    word-break: break-word;
+  }
+  .message-time{
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    font-size: 12px;
   }
 }
 

@@ -20,6 +20,7 @@ const Message : FC<messageProps> = ({messageFromMe, text}) => {
                 background: messageFromMe ? '#766AC8' : '#444444'
             }}>
                 {text}
+                <span className={"message-time"}>15:50</span>
             </div>
         </div>
     );

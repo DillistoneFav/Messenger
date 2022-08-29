@@ -4,9 +4,12 @@
   min-width: 420px;
   background: #212121;
   border-right: 1px solid #323232;
+  overflow-y: hidden;
 }
 
 .chats-list{
   border-top: 1px solid #494949;
   padding-top: 5px;
+  overflow-y: auto;
+  height: 100%;
 }

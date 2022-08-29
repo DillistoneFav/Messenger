@@ -4,4 +4,5 @@
   width: 100%;
   background: #181818;
   height: 100vh;
+  max-height: 100vh;
 }

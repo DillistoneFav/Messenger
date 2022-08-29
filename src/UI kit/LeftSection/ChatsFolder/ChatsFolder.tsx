@@ -15,6 +15,7 @@ const ChatsFolder: FC = () => {
                 <ChatItem/>
                 <ChatItem/>
                 <ChatItem/>
+                <ChatItem/>
             </div>
 
         </div>

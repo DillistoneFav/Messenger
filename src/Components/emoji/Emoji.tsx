@@ -30,7 +30,6 @@ const Emoji: FC<emojiProps> = ({setInputValue, value}) => {
 
     return (
         <div>
-
             <button aria-describedby={id} onClick={handleClick} className={"smiley-button"}>
                 <EmojiEmotionsOutlinedIcon sx={{
                     fontSize: '30px'
