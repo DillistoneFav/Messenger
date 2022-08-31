@@ -17,7 +17,7 @@ const Message : FC<messageProps> = ({messageFromMe, text}) => {
             justifyContent: messageFromMe ? 'flex-end' : 'flex-start'
         }}>
             <div className={ messageFromMe ? "message-exactly sb12" : "message-exactly sb11"} style={{
-                background: messageFromMe ? '#766AC8' : '#444444'
+                background: messageFromMe ? 'var(--violet-color)' : 'var(--secondary-background-color)'
             }}>
                 {text}
                 <span className={"message-time"}>15:50</span>

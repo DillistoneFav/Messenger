@@ -1,0 +1,38 @@
+.auth-container{
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  align-items: center;
+  justify-content: center;
+  background: #505050;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(80, 80, 80, 0.75);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(80, 80, 80, 0.75);
+  box-shadow: 0px 0px 30px 0px rgba(80, 80, 80, 0.75);
+  .tg-icon{
+    background: var(--violet-color);
+    color: var(--main-background-color);
+    font-size: 70px;
+    border-radius: 50%;
+    transform: rotate(-60deg);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .sign-in-message{
+    color: var(--text-color);
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  .enter-message{
+    color: var(--secondary-background-color)
+  }
+  .inputs-wrapper{
+    width: 300px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    .input-field{
+      border: 1px solid var(--border-color);
+      color: var(--text-color) !important;
+    }
+  }
+}

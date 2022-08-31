@@ -40,7 +40,7 @@ const RightProfileSection = () => {
             <button onClick={handleClickOpenPopover} className={"functional-button"}>
                 <MoreVertOutlinedIcon
                     sx={{
-                        color: '#8a8a8a',
+                        color: 'var(--secondary-background-color)',
                         fontSize: '30px',
                         cursor: 'pointer'
                     }}/>

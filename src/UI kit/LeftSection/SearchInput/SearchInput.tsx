@@ -13,7 +13,7 @@ const SearchInput: FC = () => {
             sx={{
                 borderRadius: '22px',
                 marginBottom: '8px',
-                background: '#181818',
+                background: 'var(--main-background-color)',
                 border: '1px solid #2f2f2f',
                 transition: '0.3s',
                 "&:hover": {

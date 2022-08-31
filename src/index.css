@@ -1,7 +1,9 @@
-*{
-  scrollbar-base-color: #8764a5;
-  scrollbar-darkshadow-color: #8764a5;
-  scrollbar-arrow-color: #8764a5;
+:root {
+  --main-background-color: #181818;
+  --violet-color: #766AC8;
+  --secondary-background-color: #8A8A8A;
+  --text-color: #E9E9E9;
+  --border-color: #323232;
 }
 
 

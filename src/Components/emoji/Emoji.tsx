@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import Popover from '@mui/material/Popover';
 import {IEmojiData} from "emoji-picker-react";
 import Picker from 'emoji-picker-react';
