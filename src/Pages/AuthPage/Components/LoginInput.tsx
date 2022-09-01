@@ -10,6 +10,7 @@ interface LoginInputProps {
 const LoginInput: FC<LoginInputProps> = ({login, handleChange}) => {
     return (
         <TextField
+            autoComplete="off"
             label="Login"
             id="outlined-start-adornment"
             value={login}

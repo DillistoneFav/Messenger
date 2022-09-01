@@ -1,17 +1,23 @@
 import React, {useState} from 'react';
 import './AuthPage.scss'
-import SendIcon from "@mui/icons-material/Send";
-import LoginInput from "./Components/LoginInput";
-import PasswordInput from "./Components/PasswordInput";
-import {Button} from "@mui/material";
+import {AUTH_ROUTE} from "../../utils/consts";
+import {useLocation} from "react-router-dom";
+import SignInComps from "./Components/SignInComps";
+import SignUpComps from "./Components/SignUpComps";
 
 interface State {
+    name: string;
+    phone: string;
     login: string;
     password: string;
 }
 
 const AuthPage = () => {
+    const location = useLocation();
+    const hasAccount = location.pathname === AUTH_ROUTE;
     const [values, setValues] = useState<State>({
+        name: '',
+        phone: '+7',
         login: '',
         password: '',
     });
@@ -20,20 +26,25 @@ const AuthPage = () => {
             setValues({ ...values, [prop]: event.target.value });
     };
 
-    return (
-        <div className={"auth-container"}>
-            <SendIcon className={"tg-icon"}/>
-            <h4 className={"sign-in-message"}>Sign in to MyMessenger</h4>
-            <div className={"enter-message"}>
-                Please enter your Login and Password to continue!
-            </div>
-            <div className={"inputs-wrapper"}>
-                <LoginInput login={values.login} handleChange={handleChange('login')}/>
-                <PasswordInput password={values.password} handleChange={handleChange('password')}/>
-                <Button variant="contained">Log in</Button>
-            </div>
-        </div>
-    );
+    const handleAuth = () => {
+        values.phone = values.phone.replace(/[()_\s]/g,"");
+        console.log(values)
+    }
+
+    return hasAccount ? (
+            <SignInComps values={values} handleChangeLogin={handleChange('login')} handleChangePassword={handleChange('password')}/>
+        )
+        :
+        (
+            <SignUpComps
+                values={values}
+                handleChangeName={handleChange('name')}
+                handleChangePhone={handleChange('phone')}
+                handleChangeLogin={handleChange('login')}
+                handleChangePassword={handleChange('password')}
+                handleAuth={handleAuth}
+            />
+        )
 };
 
 export default AuthPage;
