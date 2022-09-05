@@ -9,16 +9,7 @@ interface UserState {
 }
 
 const initialState: UserState = {
-    user: {
-        id: 0,
-        name: '',
-        nickname: '',
-        bio: '',
-        lastOnline: '',
-        phone: '',
-        image: '',
-        chats: [],
-    },
+    user: {} as IUser,
     isLoading: false,
     error: '',
 }
