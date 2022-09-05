@@ -2,8 +2,8 @@ import React, {FC} from 'react';
 
 interface IDataItemProps {
     icon: React.ReactNode;
-    phone: string;
-    title?: string;
+    description: string;
+    title: string;
 }
 
 const style = {
@@ -13,12 +13,12 @@ const style = {
     alignItems: 'center',
 }
 
-const DataItem: FC<IDataItemProps> = ({icon, phone, title}) => {
+const DataItem: FC<IDataItemProps> = ({icon, description, title}) => {
     return (
         <div className={"data-item"}>
             <div style={style}>{icon}</div>
             <div className={"data-item-info"}>
-                <div className={"top-data-item-info"}>{phone}</div>
+                <div className={"top-data-item-info"}>{description}</div>
                 <div className={"bot-data-item-info"}>{title}</div>
             </div>
         </div>

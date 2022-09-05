@@ -13,9 +13,10 @@ interface SignInCompsProps {
     };
     handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>): void,
     handleChangePassword(event: React.ChangeEvent<HTMLInputElement>): void,
+    handleAuth(event: React.MouseEvent<HTMLButtonElement>): void,
 }
 
-const SignInComps: FC<SignInCompsProps> = ({values, handleChangeLogin, handleChangePassword}) => {
+const SignInComps: FC<SignInCompsProps> = ({values, handleChangeLogin, handleChangePassword, handleAuth}) => {
     return (
         <div className={"auth-container"}>
             <SendIcon className={"tg-icon"}/>
@@ -26,7 +27,7 @@ const SignInComps: FC<SignInCompsProps> = ({values, handleChangeLogin, handleCha
             <div className={"inputs-wrapper"}>
                 <LoginInput login={values.login} handleChange={handleChangeLogin}/>
                 <PasswordInput password={values.password} handleChange={handleChangePassword}/>
-                <Button variant="contained" onClick={() => console.log(values)}>Sign in</Button>
+                <Button variant="contained" onClick={handleAuth}>Sign in</Button>
                 <div className={"account-existence"}>Have not account yet? <NavLink className={"sign-route-link"} to={REGISTRATION_ROUTE}>Sign up</NavLink></div>
             </div>
         </div>

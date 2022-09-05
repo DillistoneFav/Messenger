@@ -18,7 +18,7 @@ interface SignUpCompsProps {
     handleChangePhone(event: React.ChangeEvent<HTMLInputElement>): void,
     handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>): void,
     handleChangePassword(event: React.ChangeEvent<HTMLInputElement>): void,
-    handleAuth(): void,
+    handleAuth(event: React.MouseEvent<HTMLButtonElement>): void,
 }
 
 const SignUpComps: FC<SignUpCompsProps> = ({values, handleChangeName, handleChangePhone, handleChangeLogin, handleChangePassword, handleAuth}) => {

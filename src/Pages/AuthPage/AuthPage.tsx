@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import './AuthPage.scss'
 import {AUTH_ROUTE} from "../../utils/consts";
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import SignInComps from "./Components/SignInComps";
 import SignUpComps from "./Components/SignUpComps";
+import {useAppDispatch} from "../../Store/hooks/hooks";
+import {fetchLogin, fetchRegister} from "../../Store/reducers/ActionCreators";
 
 interface State {
     name: string;
@@ -13,6 +15,8 @@ interface State {
 }
 
 const AuthPage = () => {
+    const navigate = useNavigate()
+    const dispatch = useAppDispatch()
     const location = useLocation();
     const hasAccount = location.pathname === AUTH_ROUTE;
     const [values, setValues] = useState<State>({
@@ -26,13 +30,31 @@ const AuthPage = () => {
             setValues({ ...values, [prop]: event.target.value });
     };
 
-    const handleAuth = () => {
+    const Login = () => {
+        dispatch(fetchLogin(values.login, values.password)).then(() => {
+            navigate('/chat')
+        })
+    }
+
+    const Register = () => {
         values.phone = values.phone.replace(/[()_\s]/g,"");
-        console.log(values)
+        dispatch(fetchRegister(values.login, values.name, values.password, values.phone)).then(() => {
+            dispatch(fetchLogin(values.login, values.password)).then(() => {
+                navigate('/chat')
+            })
+        })
+    }
+
+    const handleAuth = (event: React.MouseEvent<HTMLButtonElement>) => {
+        hasAccount ? Login() : Register()
     }
 
     return hasAccount ? (
-            <SignInComps values={values} handleChangeLogin={handleChange('login')} handleChangePassword={handleChange('password')}/>
+            <SignInComps
+                values={values}
+                handleChangeLogin={handleChange('login')}
+                handleChangePassword={handleChange('password')}
+                handleAuth={handleAuth}/>
         )
         :
         (
