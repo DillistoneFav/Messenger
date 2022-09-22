@@ -1,6 +1,13 @@
-Messenger such as Telegram
+Messenger inspired by Telegram
 
-React Typescript Redux-toolkit WebSocket SCSS + Material UI + Rest API + axious.
+React Typescript 
+
+Redux-toolkit 
+
+WebSocket, Rest API
+
+SCSS + Material UI
+
 npm start
 
 backend repo (my teammate): https://github.com/Teilat/Messenger
