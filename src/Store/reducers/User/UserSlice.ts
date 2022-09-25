@@ -1,5 +1,6 @@
 import {IUser} from "../../../interfaces/IUser";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {IChat} from "../../../interfaces/IChat";
 
 
 interface UserState {
@@ -36,6 +37,12 @@ export const userSlice = createSlice({
         resetUser(state) {
             state.user = {} as IUser;
             state.isAuth = false;
+        },
+
+        addChat(state, action: PayloadAction<IChat>) {
+            state.user.chats = [...state.user.chats, action.payload]
+            state.error = ''
+            state.isLoading = false
         }
     }
 })

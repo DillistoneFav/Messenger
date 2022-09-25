@@ -8,7 +8,7 @@ import {Button, createTheme, Input, InputAdornment, ThemeProvider} from "@mui/ma
 import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined";
 import {createChat} from "../../../../../Store/reducers/Chat/ChatActionCreators";
 import {useAppDispatch, useAppSelector} from "../../../../../Store/hooks/hooks";
-import {chatSlice} from "../../../../../Store/reducers/Chat/ChatSlice";
+import {userSlice} from "../../../../../Store/reducers/User/UserSlice";
 
 interface CreateChatProps {
     bounce: boolean | null
@@ -29,12 +29,12 @@ const theme = createTheme({
 });
 
 const CreateChatComp: FC<CreateChatProps> = ({bounce}) => {
-    const {error} = useAppSelector(state => state.chatReducer)
+    const {user, error} = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
     const [open, setOpen] = useState<boolean>(false)
     const [usernameValue, setUsernameValue] = useState<string>("")
     const handleOpen = () => {
-        dispatch(chatSlice.actions.chatFetchingError(""))
+        dispatch(userSlice.actions.userFetchingError(""))
         setOpen(true)
     };
     const handleClose = () => {
@@ -47,9 +47,9 @@ const CreateChatComp: FC<CreateChatProps> = ({bounce}) => {
 
     const handleCreateChat = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (usernameValue.length) {
-            dispatch(createChat(usernameValue))
+            dispatch(createChat(user.nickname, usernameValue))
         } else {
-            dispatch(chatSlice.actions.chatFetchingError("Fill input value!"))
+            dispatch(userSlice.actions.userFetchingError("Fill input value!"))
         }
     }
 

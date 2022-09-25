@@ -33,7 +33,7 @@ const AuthPage = () => {
 
     const Login = () => {
         dispatch(fetchLogin(values.login, values.password)).then(() => {
-            isAuth && navigate('/chats')
+            navigate('/chats')
         })
     }
 

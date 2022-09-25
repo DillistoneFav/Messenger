@@ -1,21 +1,19 @@
 import {$host} from "../AxiosConfig";
-import {useAppSelector} from "../../hooks/hooks";
 import {AppDispatch} from "../../store";
-import {chatSlice} from "./ChatSlice";
+import {userSlice} from "../User/UserSlice";
 
-export const createChat = (companionUsername: string) => async (dispatch: AppDispatch) => {
-    const {user} = useAppSelector(state => state.userReducer)
+
+export const createChat = (myNickname: string, companionUsername: string) => async (dispatch: AppDispatch) => {
     try {
-        dispatch(chatSlice.actions.chatFetching)
+        dispatch(userSlice.actions.userFetching)
         await $host.post('/chat', {
-            users: [user.nickname, companionUsername]
+            users: [myNickname, companionUsername]
         }).then(response => {
-            user.chats.push(response.data)
-            dispatch(chatSlice.actions.chatFetchingSuccess)
+            dispatch(userSlice.actions.addChat(response.data))
         })
     } catch (error) {
         if (error instanceof Error) {
-            dispatch(chatSlice.actions.chatFetchingError(error.message))
+            dispatch(userSlice.actions.userFetchingError(error.message))
         }
     }
 }
