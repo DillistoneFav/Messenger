@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./features/Routing/AppRouter";
-import {useAppSelector} from "./Store/hooks/hooks";
-import {RootState} from "./Store/store";
+import {useAppDispatch} from "./Store/hooks/hooks";
+import {checkAuth} from "./utils/functions";
 
 
 function App() {
-    const {} = useAppSelector((state: RootState) => state.userReducer.user)
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        checkAuth(dispatch)
+    }, [])
+
   return (
-      <BrowserRouter>
+      <BrowserRouter >
           <div className="App">
              <AppRouter/>
           </div>

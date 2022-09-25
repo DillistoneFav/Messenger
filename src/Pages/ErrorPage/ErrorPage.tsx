@@ -1,7 +1,9 @@
 import React from 'react';
 import classes from './ErrorPage.module.css'
+import {useNavigate} from "react-router-dom";
 
 const ErrorPage = () => {
+    const navigate = useNavigate()
      return (
         <div className={classes.top}>
             <div className={classes.notfound}>

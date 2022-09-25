@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import userReducer from './reducers/UserSlice'
+import userReducer from './reducers/User/UserSlice'
+import chatReducer from './reducers/Chat/ChatSlice'
 
 const rootReducer = combineReducers({
-    userReducer
+    userReducer,
+    chatReducer
 })
 
 export const setupStore = () => {

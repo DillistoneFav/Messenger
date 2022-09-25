@@ -1,0 +1,48 @@
+.chat-item {
+  height: 55px;
+  color: #E9E9E9;
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  &:hover{
+    background: #2B2B2B;
+  }
+  .user-caption {
+    width: 100%;
+    padding: 0 1rem;
+    flex: 1 1 auto;
+    position: relative;
+    .threeDots{
+      color: var(--secondary-background-color);
+      position: absolute;
+      right: 1rem;
+      bottom: -2px;
+    }
+    .dialog-title{
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      height: 27px;
+      .name{
+        font-weight: 500;
+        width: 90%;
+      }
+      .last-message-time{
+        font-size: 14px;
+        color: var(--secondary-background-color);
+      }
+    }
+    .dialog-subTitle{
+      max-width: 310px;
+      word-break: break-all;
+      max-height: 20px;
+      position: relative;
+      overflow: hidden;
+      .last-message{
+        font-size: 14px;
+        color: var(--secondary-background-color);
+      }
+    }
+  }
+}

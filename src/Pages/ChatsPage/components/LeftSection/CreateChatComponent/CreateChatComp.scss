@@ -1,0 +1,65 @@
+.create-icon{
+    bottom: -75px;
+    right: 15px;
+    position: absolute;
+    color: #fff;
+    background: var(--violet-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+}
+.bounceClass{
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+.unbounceClass{
+    animation-name: unbounce;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+.modalCreateChat{
+    display: flex;
+    flex-direction: column;
+    background: var(--main-background-color);
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: var(--text-color);
+    input{
+        color: var(--text-color);
+    }
+    .createButtonContainer{
+        width: 100%;
+        .createButton{
+            background: var(--violet-color);
+            float: right;
+            text-transform: none;
+        }
+    }
+    .errorMessage{
+        color: var(--danger-color);
+        margin-bottom: 0.3rem;
+    }
+}
+
+
+@keyframes bounce {
+    0%  { transform: translateY( 75px )}
+    50% { transform: translateY( -100px )}
+    100% { transform: translateY( -90px )}
+}
+@keyframes unbounce {
+    0%  { transform: translateY( -90px )}
+    50% { transform: translateY( -100px )}
+    100% { transform: translateY( 75px )}
+}

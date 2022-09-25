@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import './AuthPage.scss'
 import {AUTH_ROUTE} from "../../utils/consts";
 import {useLocation, useNavigate} from "react-router-dom";
-import SignInComps from "./Components/SignInComps";
-import SignUpComps from "./Components/SignUpComps";
-import {useAppDispatch} from "../../Store/hooks/hooks";
-import {fetchLogin, fetchRegister} from "../../Store/reducers/ActionCreators";
+import SignInComps from "./components/SignInComps";
+import SignUpComps from "./components/SignUpComps";
+import {useAppDispatch, useAppSelector} from "../../Store/hooks/hooks";
+import {fetchLogin, fetchRegister} from "../../Store/reducers/User/UserActionCreators";
 
 interface State {
     name: string;
@@ -15,6 +15,7 @@ interface State {
 }
 
 const AuthPage = () => {
+    const {isAuth} = useAppSelector(state => state.userReducer)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const location = useLocation();
@@ -32,7 +33,7 @@ const AuthPage = () => {
 
     const Login = () => {
         dispatch(fetchLogin(values.login, values.password)).then(() => {
-            navigate('/chat')
+            isAuth && navigate('/chats')
         })
     }
 
@@ -40,7 +41,7 @@ const AuthPage = () => {
         values.phone = values.phone.replace(/[()_\s]/g,"");
         dispatch(fetchRegister(values.login, values.name, values.password, values.phone)).then(() => {
             dispatch(fetchLogin(values.login, values.password)).then(() => {
-                navigate('/chat')
+                navigate('/chats')
             })
         })
     }

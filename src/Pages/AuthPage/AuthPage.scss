@@ -34,6 +34,16 @@
     margin-top: 50px;
     display: flex;
     flex-direction: column;
+    .auth-error{
+      color: var(--danger-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+    }
+    .auth-button{
+      margin-top: 0.5rem;
+    }
     .phone-input{
       margin-bottom: 1rem;
       padding: 16.5px 14px;
