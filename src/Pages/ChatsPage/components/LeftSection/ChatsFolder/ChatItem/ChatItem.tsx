@@ -28,6 +28,7 @@ const ChatItem: FC<ChatItemProps> = ({name, lastMessage, time, id, selected}) =>
     }, [])
 
     const handleOpenChat = () => {
+        localStorage.setItem("openedChatId", String(id))
         navigate(`/chats/${id}`)
     }
 

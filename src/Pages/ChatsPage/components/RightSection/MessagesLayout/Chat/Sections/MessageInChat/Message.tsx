@@ -9,9 +9,10 @@ export enum alignment {
 interface messageProps {
     messageFromMe: alignment;
     text: string;
+    createTime: string;
 }
 
-const Message : FC<messageProps> = ({messageFromMe, text}) => {
+const Message : FC<messageProps> = ({messageFromMe, text, createTime}) => {
     return (
         <div className={"chat-message"} style={{
             justifyContent: messageFromMe ? 'flex-end' : 'flex-start'
@@ -20,7 +21,7 @@ const Message : FC<messageProps> = ({messageFromMe, text}) => {
                 background: messageFromMe ? 'var(--violet-color)' : 'var(--secondary-background-color)'
             }}>
                 {text}
-                <span className={"message-time"}>15:50</span>
+                <span className={"message-time"}>{createTime}</span>
             </div>
         </div>
     );

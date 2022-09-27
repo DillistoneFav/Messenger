@@ -1,8 +1,10 @@
 import React from 'react';
 import LogoutIcon from "@mui/icons-material/Logout";
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch} from "../../../../../../../Store/hooks/hooks";
-import {fetchLogOut} from "../../../../../../../Store/reducers/User/UserActionCreators";
+import {fetchLogOut} from "../../../../../../Store/reducers/User/UserActionCreators";
+import {useAppDispatch} from "../../../../../../Store/hooks/hooks";
+
+
 
 const LogOutButton = () => {
     const navigate = useNavigate()

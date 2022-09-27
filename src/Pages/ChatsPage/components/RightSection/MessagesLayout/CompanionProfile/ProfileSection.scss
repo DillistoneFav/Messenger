@@ -8,6 +8,8 @@
   border-bottom: 1px solid var(--border-color);
   .left-sect{
     display: flex;
+    cursor: pointer;
+    width: 95%;
     .user-profile-caption{
       display: flex;
       flex-direction: column;
@@ -23,6 +25,7 @@
     }
   }
   .right-sect{
+    width: 5%;
     .functional-button{
       background: none;
       outline: none;

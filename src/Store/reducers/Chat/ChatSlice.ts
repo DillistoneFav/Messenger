@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IChat, ILastMessage} from "../../../interfaces/IChat";
+import {IChat} from "../../../interfaces/IChat";
 import {IMessage} from "../../../interfaces/IMessage";
 
 
@@ -10,13 +10,7 @@ interface ChatState {
 }
 
 const initialState: ChatState = {
-    chat: {
-        id: -1,
-        lastMessage: {} as ILastMessage,
-        name: "",
-        users: [],
-        messages: []
-    },
+    chat: {} as IChat,
     otherChatUsers: [],
     messages: [],
 }
@@ -30,7 +24,12 @@ export const ChatsSlice = createSlice({
         },
         setOtherUsers(state, action: PayloadAction<string[]>) {
             state.otherChatUsers = action.payload
-        }
+        },
+        addChatMessage(state, action: PayloadAction<IMessage[]>) {
+            action.payload.forEach(item => {
+                state.messages = [...state.messages, item]
+            })
+        },
     }
 })
 

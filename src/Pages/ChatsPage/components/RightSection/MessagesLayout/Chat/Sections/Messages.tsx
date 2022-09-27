@@ -6,7 +6,8 @@ import {useAppSelector} from "../../../../../../../Store/hooks/hooks";
 
 const Messages = () => {
 
-    const {chat} = useAppSelector(state => state.chatReducer)
+    const {messages} = useAppSelector(state => state.chatReducer)
+    const {user} = useAppSelector(state => state.userReducer)
 
     useEffect(() => {
        scrollBottom()
@@ -14,14 +15,9 @@ const Messages = () => {
 
     return (
         <div id={"toScroll"} className={"messages-container"}>
-            <Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/><Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/><Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/><Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/><Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/><Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/><Message messageFromMe={alignment.fromOther} text={'ну здарова'}/>
-            <Message messageFromMe={alignment.fromMe} text={'ну здарова'}/>
+            {messages.map(item => {
+                return <Message key={item.Id} createTime={item.CreatedAt} messageFromMe={item.UserId === user.nickname ? alignment.fromMe : alignment.fromOther} text={item.Text}/>
+            })}
         </div>
     );
 };

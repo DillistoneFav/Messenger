@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './AuthPage.scss'
 import {AUTH_ROUTE} from "../../utils/consts";
 import {useLocation, useNavigate} from "react-router-dom";
@@ -15,7 +15,6 @@ interface State {
 }
 
 const AuthPage = () => {
-    const {isAuth} = useAppSelector(state => state.userReducer)
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const location = useLocation();

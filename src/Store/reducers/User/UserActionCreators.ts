@@ -20,8 +20,8 @@ export const fetchLogin = (username: string, password: string) => async (dispatc
         })
     } catch(error) {
         if (error instanceof Error) {
-            //dispatch(userSlice.actions.userFetchingError(error.message))
-            dispatch(userSlice.actions.userFetchingError("Incorrect Username or Password!"))
+            //dispatch(userSlice.actions.userFetchingError(error.message)) // had to be
+            dispatch(userSlice.actions.userFetchingError("Incorrect Username or Password!")) // there's no good errors from backend for now
         }
     }
 }
