@@ -1,6 +1,8 @@
 import {$host} from "../AxiosConfig";
 import {AppDispatch} from "../../store";
 import {userSlice} from "../User/UserSlice";
+import {IChat} from "../../../interfaces/IChat";
+import {ChatsSlice} from "./ChatSlice";
 
 
 export const createChat = (myNickname: string, companionUsername: string) => async (dispatch: AppDispatch) => {
@@ -16,4 +18,16 @@ export const createChat = (myNickname: string, companionUsername: string) => asy
             dispatch(userSlice.actions.userFetchingError(error.message))
         }
     }
+}
+
+export const setSelectedChat = (myUsername: string, id: number, chats: IChat[]) => (dispatch: AppDispatch) => {
+    let selectedChat = chats.find(item => {
+        return item.id === id;
+    })
+    dispatch(ChatsSlice.actions.setSelectedChat(selectedChat!))
+
+    let otherUsers = selectedChat!.users.filter(item => {
+        return item !== myUsername
+    })
+    dispatch(ChatsSlice.actions.setOtherUsers(otherUsers))
 }

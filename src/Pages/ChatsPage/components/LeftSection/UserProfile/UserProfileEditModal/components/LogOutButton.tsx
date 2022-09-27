@@ -8,9 +8,8 @@ const LogOutButton = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const logout = (event: React.MouseEvent<HTMLButtonElement>) => {
-        dispatch(fetchLogOut()).then(() => {
-            navigate("/auth")
-        });
+        dispatch(fetchLogOut())
+        navigate("/auth")
     }
 
     return (

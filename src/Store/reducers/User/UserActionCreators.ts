@@ -2,7 +2,9 @@ import {AppDispatch} from "../../store";
 import {IUser} from "../../../interfaces/IUser";
 import {userSlice} from "./UserSlice";
 import {$host} from "../AxiosConfig";
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
 
 export const fetchLogin = (username: string, password: string) => async (dispatch: AppDispatch) => {
     try {
@@ -11,6 +13,8 @@ export const fetchLogin = (username: string, password: string) => async (dispatc
             username: username,
             password: password
         }).then(response => {
+            let expireDate = new Date(response.headers["expire-token"]);
+            cookies.set("user", response.headers["access-token"], { path: "/", expires: expireDate})
             localStorage.setItem('user', JSON.stringify(response.data))
             dispatch(userSlice.actions.userFetchingSuccess(response.data))
         })
@@ -41,14 +45,9 @@ export const fetchRegister = (login: string, name: string, password: string, pho
 }
 
 export const fetchLogOut = () => async (dispatch: AppDispatch) => {
-    try {
-        await $host.post('/logout')
-    } catch (error) {
-        if (error instanceof Error) {
-            dispatch(userSlice.actions.userFetchingError(error.message))
-        }
-    } finally {
-        localStorage.removeItem('user')
-        dispatch(userSlice.actions.resetUser())
-    }
+    await $host.get('/logout')
+
+    dispatch(userSlice.actions.resetUser())
+    localStorage.removeItem('user')
+    cookies.remove('user')
 }

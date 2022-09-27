@@ -1,9 +1,14 @@
-import {CHAT_ROUTE, ERROR_ROUTE, AUTH_ROUTE, REGISTRATION_ROUTE} from "../../utils/consts";
+import {CHATS_ROUTE, AUTH_ROUTE, REGISTRATION_ROUTE, CHATIDPAGE_ROUTE} from "../../utils/consts";
 import AuthPage from "../../Pages/AuthPage/AuthPage";
-import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import ChatsPage from "../../Pages/ChatsPage/ChatsPage";
+import React from "react";
 
-export const publicRoutes = [
+export interface IRoute {
+    path: string;
+    element: React.ComponentType;
+}
+
+export const publicRoutes: IRoute[] = [
     {
         path: AUTH_ROUTE,
         element: AuthPage
@@ -12,19 +17,15 @@ export const publicRoutes = [
         path: REGISTRATION_ROUTE,
         element: AuthPage
     },
-    {
-        path: ERROR_ROUTE,
-        element: ErrorPage
-    }
 ]
 
-export const authRoutes = [
+export const authRoutes: IRoute[] = [
     {
-        path: CHAT_ROUTE,
+        path: CHATS_ROUTE,
         element: ChatsPage
     },
     {
-        path: ERROR_ROUTE,
-        element: ErrorPage
-    }
+        path: CHATIDPAGE_ROUTE,
+        element: ChatsPage
+    },
 ]

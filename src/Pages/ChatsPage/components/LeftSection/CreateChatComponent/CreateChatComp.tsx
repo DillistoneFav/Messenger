@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
