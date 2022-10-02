@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import UserProfile from "./UserProfile/UserProfile";
 import SearchInput from "./SearchInput/SearchInput";
 import './LeftSection.scss'
@@ -7,10 +7,6 @@ import CreateChatComp from "./CreateChatComponent/CreateChatComp";
 
 const LeftSection = () => {
     const [bounce, setBounce] = useState<boolean | null>(null)
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <div

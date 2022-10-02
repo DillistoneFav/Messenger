@@ -7,7 +7,7 @@ import {ChatsSlice} from "./ChatSlice";
 export const getChats = () => async (dispatch: AppDispatch) =>{
     try {
         await $host.get('/chats').then(response => {
-            dispatch(ChatsSlice.actions.getChats(response.data))
+            dispatch(ChatsSlice.actions.setChats(response.data))
         })
     } catch (error) {
         if (error instanceof Error) {

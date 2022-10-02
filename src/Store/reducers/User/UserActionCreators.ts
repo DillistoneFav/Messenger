@@ -3,6 +3,7 @@ import {IUser} from "../../../interfaces/IUser";
 import {userSlice} from "./UserSlice";
 import {$host} from "../AxiosConfig";
 import Cookies from 'universal-cookie';
+import {ChatsSlice} from "../Chat/ChatSlice";
 
 const cookies = new Cookies();
 
@@ -48,6 +49,7 @@ export const fetchLogOut = () => (dispatch: AppDispatch) => {
     $host.get('/logout')
 
     dispatch(userSlice.actions.resetUser())
+    dispatch(ChatsSlice.actions.resetChats())
     localStorage.removeItem('user')
     localStorage.removeItem('openedChatId')
     cookies.remove('user')

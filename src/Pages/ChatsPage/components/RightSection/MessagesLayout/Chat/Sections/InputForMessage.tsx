@@ -1,13 +1,12 @@
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import Emoji from "../../../../../../../features/emoji/Emoji";
+import {sendSocketMessage} from "../../../../../../../utils/socket";
 
-interface InputForMessageProps {
-    sendMessage(arg0: string): void
-}
 
-const InputForMessage: FC<InputForMessageProps> = ({sendMessage}) => {
+const InputForMessage= () => {
     const [inputValue, setInputValue] = useState<string>("")
+
 
     const handleChangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value)
@@ -17,7 +16,7 @@ const InputForMessage: FC<InputForMessageProps> = ({sendMessage}) => {
         <div className={"input-message-container"}>
             <Emoji value={inputValue} setInputValue={setInputValue}/>
             <input placeholder="Message" value={inputValue} onChange={handleChangeValue} className={"input-message"}/>
-            <SendIcon className={"send-icon"} onClick={() => sendMessage(inputValue)}/>
+            <SendIcon className={"send-icon"} onClick={() => sendSocketMessage(inputValue)}/>
         </div>
     );
 };

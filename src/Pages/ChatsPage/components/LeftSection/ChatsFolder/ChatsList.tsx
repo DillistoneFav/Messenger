@@ -1,11 +1,18 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import ChatItem, {selected} from "./ChatItem/ChatItem";
 import './ChatsList.scss'
-import {useAppSelector} from "../../../../../Store/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../../../../../Store/hooks/hooks";
 import SpeakerNotesOffIcon from '@mui/icons-material/SpeakerNotesOff';
+import {getChats} from "../../../../../Store/reducers/Chat/ChatActionCreators";
 
 const ChatsList: FC = () => {
     const {selectedChat, chats} = useAppSelector(state => state.chatReducer)
+
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(getChats())
+    }, [])
 
     const getChatLastMessage = (chatId: number) => {
         let findChat = chats.find((item) => {

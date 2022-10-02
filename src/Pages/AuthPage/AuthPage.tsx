@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './AuthPage.scss'
 import {AUTH_ROUTE} from "../../utils/consts";
 import {useLocation, useNavigate} from "react-router-dom";
 import SignInComps from "./components/SignInComps";
 import SignUpComps from "./components/SignUpComps";
-import {useAppDispatch, useAppSelector} from "../../Store/hooks/hooks";
+import {useAppDispatch} from "../../Store/hooks/hooks";
 import {fetchLogin, fetchRegister} from "../../Store/reducers/User/UserActionCreators";
 
 interface State {

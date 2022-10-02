@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../../../Store/hooks/hooks";
 import Cookies from 'universal-cookie';
 import {setSelectedChat} from "../../../../../../Store/reducers/Chat/ChatActionCreators";
-import {ChatsSlice} from "../../../../../../Store/reducers/Chat/ChatSlice";
+import {connectToSocket} from "../../../../../../utils/socket";
 const cookies = new Cookies();
 
 export enum selected {
@@ -34,21 +34,7 @@ const ChatItem: FC<ChatItemProps> = ({name, lastMessage, time, id, selected}) =>
     }, [])
 
     const handleOpenChat = () => {
-        const websocket = new WebSocket(`ws://192.168.1.44:8080/chat/${id}?token=${cookies.get("user")}`)
-        websocket.onopen = (event) => {
-            if (websocket.readyState === 1) dispatch(ChatsSlice.actions.setWebSocket(websocket))
-        }
-        websocket.onmessage = (event) => {
-            const message = JSON.parse(event.data)
-            console.log(message)
-            dispatch(ChatsSlice.actions.addChatMessage(message))
-        }
-        websocket.onclose = () => {
-            console.log("socket close")
-        }
-        websocket.onerror = () => {
-            console.log("socket error")
-        }
+        connectToSocket(`ws://192.168.1.44:8080/chat/${id}?token=${cookies.get("user")}`, dispatch)
 
         dispatch(setSelectedChat(user.nickname, id, chats))
         localStorage.setItem("openedChatId", String(id))

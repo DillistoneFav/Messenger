@@ -35,6 +35,8 @@ export const userSlice = createSlice({
         resetUser(state) {
             state.user = {} as IUser;
             state.isAuth = false;
+            state.error = '';
+            state.isLoading = false;
         }
     }
 })
