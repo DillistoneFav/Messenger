@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import ProfileSection from "./CompanionProfile/ProfileSection";
 import './RightSection.scss'
 import Chat from "./Chat/Chat";

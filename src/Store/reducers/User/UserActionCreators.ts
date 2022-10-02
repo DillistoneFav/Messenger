@@ -44,10 +44,11 @@ export const fetchRegister = (login: string, name: string, password: string, pho
     }
 }
 
-export const fetchLogOut = () => async (dispatch: AppDispatch) => {
-    await $host.get('/logout')
+export const fetchLogOut = () => (dispatch: AppDispatch) => {
+    $host.get('/logout')
 
     dispatch(userSlice.actions.resetUser())
     localStorage.removeItem('user')
+    localStorage.removeItem('openedChatId')
     cookies.remove('user')
 }

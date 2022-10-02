@@ -1,5 +1,3 @@
-import {IChat} from "./IChat";
-
 export interface IUser {
     name: string;
     nickname: string;
@@ -8,5 +6,4 @@ export interface IUser {
     createdAt?: number;
     phone: string;
     image?: string;
-    chats: IChat[];
 }

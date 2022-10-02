@@ -6,7 +6,7 @@ import {useAppSelector} from "../../../../../../../Store/hooks/hooks";
 
 const Messages = () => {
 
-    const {messages} = useAppSelector(state => state.chatReducer)
+    const {selectedChat} = useAppSelector(state => state.chatReducer)
     const {user} = useAppSelector(state => state.userReducer)
 
     useEffect(() => {
@@ -15,8 +15,8 @@ const Messages = () => {
 
     return (
         <div id={"toScroll"} className={"messages-container"}>
-            {messages.map(item => {
-                return <Message key={item.Id} createTime={item.CreatedAt} messageFromMe={item.UserId === user.nickname ? alignment.fromMe : alignment.fromOther} text={item.Text}/>
+            {selectedChat && selectedChat.messages.map(item => {
+                return <Message key={Math.random()} createTime={item.CreatedAt} messageFromMe={item.UserId === user.nickname ? alignment.fromMe : alignment.fromOther} text={item.Text}/>
             })}
         </div>
     );

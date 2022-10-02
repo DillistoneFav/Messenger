@@ -2,34 +2,42 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IChat} from "../../../interfaces/IChat";
 import {IMessage} from "../../../interfaces/IMessage";
 
-
 interface ChatState {
-    chat: IChat;
+    selectedChat: IChat | null;
+    chats: IChat[];
     otherChatUsers: string[];
-    messages: IMessage[];
+    websocket: WebSocket | null;
 }
 
 const initialState: ChatState = {
-    chat: {} as IChat,
+    chats: [],
+    selectedChat: null,
     otherChatUsers: [],
-    messages: [],
+    websocket: null
 }
 
 export const ChatsSlice = createSlice({
     name: 'chat',
     initialState,
     reducers: {
+        getChats(state, action: PayloadAction<IChat[]>) {
+            state.chats = action.payload
+        },
+        createChat(state, action: PayloadAction<IChat>) {
+            state.chats = [...state.chats, action.payload]
+        },
         setSelectedChat(state, action: PayloadAction<IChat>) {
-            state.chat = action.payload
+            state.selectedChat = action.payload
         },
         setOtherUsers(state, action: PayloadAction<string[]>) {
             state.otherChatUsers = action.payload
         },
-        addChatMessage(state, action: PayloadAction<IMessage[]>) {
-            action.payload.forEach(item => {
-                state.messages = [...state.messages, item]
-            })
+        setWebSocket(state, action: PayloadAction<WebSocket>) {
+            state.websocket = action.payload
         },
+        addChatMessage(state, action: PayloadAction<IMessage[]>) {
+            state.selectedChat!.messages = [...state.selectedChat!.messages, ...action.payload]
+        }
     }
 })
 

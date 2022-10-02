@@ -4,14 +4,24 @@ import {userSlice} from "../User/UserSlice";
 import {IChat} from "../../../interfaces/IChat";
 import {ChatsSlice} from "./ChatSlice";
 
+export const getChats = () => async (dispatch: AppDispatch) =>{
+    try {
+        await $host.get('/chats').then(response => {
+            dispatch(ChatsSlice.actions.getChats(response.data))
+        })
+    } catch (error) {
+        if (error instanceof Error) {
+            dispatch(userSlice.actions.userFetchingError(error.message))
+        }
+    }
+}
 
 export const createChat = (myNickname: string, companionUsername: string) => async (dispatch: AppDispatch) => {
     try {
-        dispatch(userSlice.actions.userFetching)
         await $host.post('/chat', {
             users: [myNickname, companionUsername]
         }).then(response => {
-            dispatch(userSlice.actions.addChat(response.data))
+            dispatch(ChatsSlice.actions.createChat(response.data))
         })
     } catch (error) {
         if (error instanceof Error) {
