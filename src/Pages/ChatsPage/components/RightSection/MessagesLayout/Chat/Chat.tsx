@@ -2,8 +2,7 @@ import React from 'react';
 import './Chat.scss'
 import Messages from "./Sections/Messages";
 import InputForMessage from "./Sections/InputForMessage";
-
-
+import ActionOnMessage from "./Sections/ActionOnMessage";
 
 // const getMessagesStructure = {
 //     "action": "getMessages",
@@ -13,12 +12,12 @@ import InputForMessage from "./Sections/InputForMessage";
 //     },
 // }
 
-
 const Chat = () => {
 
     return (
         <div className={"chat-container"}>
             <Messages/>
+            <ActionOnMessage/>
             <InputForMessage/>
         </div>
     );

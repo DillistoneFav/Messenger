@@ -41,3 +41,18 @@
   border-bottom: 10px solid transparent;
   right: -17px;
 }
+
+.popover-class{
+  .popover-content{
+    padding: 5px 3px;
+  }
+  .popover-action{
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .actionName{
+      width: 80%;
+    }
+  }
+}

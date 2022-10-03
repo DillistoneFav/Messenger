@@ -41,3 +41,8 @@ export const setSelectedChat = (myUsername: string, id: number, chats: IChat[]) 
     })
     dispatch(ChatsSlice.actions.setOtherUsers(otherUsers))
 }
+
+export const setActionMessage = (selectedChat: IChat, messageId: number) => (dispatch: AppDispatch) => {
+    let findMessage = selectedChat.messages.find(item => item.Id === messageId)
+    dispatch(ChatsSlice.actions.setActionMessage(findMessage!))
+}

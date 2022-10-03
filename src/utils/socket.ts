@@ -18,12 +18,42 @@ export const connectToSocket = (url: string, dispatch: AppDispatch) => {
     }
 }
 
-export const sendSocketMessage = (inputValue: string) => {
-    const sendMessageStructure = {
-        "action": "sendMessage",
-        "payload": {
-            "text": inputValue
+const setMessageStructure = (messageAction: string, messageId?: number, inputValue?: string)  => {
+    if (messageAction === "sending") {
+        return {
+            "action": "sendMessage",
+            "payload": {
+                "text": inputValue
+            }
         }
     }
-    currentSocket!.send(JSON.stringify(sendMessageStructure))
+    if (messageAction === "editing") {
+        return {
+            "action": "editMessage",
+            "payload": {
+                "messageId": messageId,
+                "text": inputValue
+            }
+        }
+    }
+    if (messageAction === "replying") {
+        return {
+            "action": "editMessage",
+            "payload": {
+                "replyMessageId": messageId,
+                "text": inputValue
+            }
+        }
+    }
+    return {
+        "action": "deleteMessage",
+        "payload": {
+            "messageId": messageId,
+        }
+    }
+}
+
+export const sendSocketMessage = (messageAction: string,  messageId?: number, inputValue?: string) => {
+    const structure = setMessageStructure(messageAction, messageId, inputValue)
+    currentSocket!.send(JSON.stringify(structure))
 }

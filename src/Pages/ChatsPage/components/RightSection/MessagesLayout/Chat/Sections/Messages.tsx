@@ -18,7 +18,13 @@ const Messages = () => {
     return (
         <div id={"toScroll"} className={"messages-container"}>
             {selectedChat && chats[selectedChat!.id].messages.map(item => {
-                return <Message key={Math.random()} createTime={item.CreatedAt} messageFromMe={item.UserId === user.nickname ? alignment.fromMe : alignment.fromOther} text={item.Text}/>
+                return <Message
+                    key={Math.random()}
+                    id={item.Id}
+                    createTime={item.CreatedAt}
+                    messageFromMe={item.UserId === user.nickname ? alignment.fromMe : alignment.fromOther}
+                    text={item.Text}
+                />
             })}
         </div>
     );
